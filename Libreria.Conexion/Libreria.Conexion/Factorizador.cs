@@ -1,4 +1,5 @@
 ﻿using Libreria.Conexion.Conexiones;
+using Libreria.Conexion.Herramientas;
 using Libreria.Conexion.Interfaces;
 using Libreria.Conexion.Models;
 using System;
@@ -15,8 +16,9 @@ namespace Libreria.Conexion
         {
             return DB switch
             {
-                eProveedorDB.Sql => SqlServer<T>.Conectar(ConnectionString),
-                eProveedorDB.MySql => MySql<T>.Conectar(ConnectionString)
+                eProveedorDB.Sql => SqlServer<T>.Conectar(EncryptTool.Decrypt(ConnectionString)),
+                eProveedorDB.MySql => MySql<T>.Conectar(EncryptTool.Decrypt(ConnectionString)),
+                _ => throw new NotImplementedException()
             };
         }
     }

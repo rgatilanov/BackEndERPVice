@@ -12,7 +12,11 @@ namespace Libreria.Conexion.Conexiones
 {
     internal class MySql<T> : IConexionDB<T>
     {
-        public void Dispose()
+        public static MySql<T> Conectar(string strConnectionString)
+        {
+            throw new NotImplementedException(); 
+        }
+            public void Dispose()
         {
             throw new NotImplementedException();
         }

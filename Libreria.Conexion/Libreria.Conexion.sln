@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libreria.Conexion", "Libreria.Conexion\Libreria.Conexion.csproj", "{94044F5F-D0F6-4BF2-951A-C12741462F36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libreria.ERP", "Libreria.Catalogos\Libreria.ERP.csproj", "{D6EAFEE7-650B-4CF5-8D24-BAE4744A90BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{94044F5F-D0F6-4BF2-951A-C12741462F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94044F5F-D0F6-4BF2-951A-C12741462F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94044F5F-D0F6-4BF2-951A-C12741462F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6EAFEE7-650B-4CF5-8D24-BAE4744A90BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6EAFEE7-650B-4CF5-8D24-BAE4744A90BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6EAFEE7-650B-4CF5-8D24-BAE4744A90BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6EAFEE7-650B-4CF5-8D24-BAE4744A90BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

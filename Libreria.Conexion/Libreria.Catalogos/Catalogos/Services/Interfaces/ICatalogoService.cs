@@ -1,4 +1,5 @@
-﻿using Libreria.ERP.Catalogos.Models;
+﻿using Libreria.Conexion.Interfaces;
+using Libreria.ERP.Catalogos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Libreria.ERP.Catalogos.Services.Interfaces
 {
     public interface ICatalogoService: IDisposable
     {
-        public List<Ciudad> ConsultarCiudades(int IdEstado);
+        public List<Ciudad> ConsultarCiudades(IConexionDB<Ciudad> conexion, int IdEstado);
 
         #region IDisposable Members
         public void Dispose()

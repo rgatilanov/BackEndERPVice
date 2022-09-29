@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Libreria.Conexion.Herramientas
 {
+    /// <summary>
+    /// En esta liga se puede encriptar y desencriptar https://dotnetfiddle.net/q0ShBN 
+    /// </summary>
     internal class EncryptTool
     {
         internal static string Encrypt(string clearText)

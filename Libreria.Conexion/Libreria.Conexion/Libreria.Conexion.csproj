@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Conexiones\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>

@@ -1,25 +1,36 @@
 ﻿using Libreria.Conexion.Conexiones;
 using Libreria.Conexion.Herramientas;
-using Libreria.Conexion.Interfaces;
 using Libreria.Conexion.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Libreria.Conexion
 {
-    public class Factorizador<T>
+    public class Factorizador
     {
-        public static IConexionDB<T> Create(string ConnectionString, eProveedorDB DB)
+        public static DbConnection Create(string ConnectionString, eProveedorDB DB)
         {
-            return DB switch
+            switch (DB)
             {
-                eProveedorDB.Sql => SqlServer<T>.Conectar(EncryptTool.Decrypt(ConnectionString)),
-                eProveedorDB.MySql => MySql<T>.Conectar(EncryptTool.Decrypt(ConnectionString)),
-                _ => throw new NotImplementedException()
-            };
+                case eProveedorDB.Sql:
+                    SqlServer _sqlServer = new SqlServer(EncryptTool.Decrypt(ConnectionString));
+                    return _sqlServer.Open(ConnectionString);
+                   
+                case eProveedorDB.MySql:
+                    throw new NotImplementedException();
+                case eProveedorDB.PostgreSQL:
+                    throw new NotImplementedException();
+                case eProveedorDB.Oracle:
+                    throw new NotImplementedException();
+                case eProveedorDB.MariDB:
+                    throw new NotImplementedException();
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "VsPST6s4qhnJn9gzxw3KXJ6R0CJOibYWRCeV9oHjAjq84aRFU5tV2cR11oiT0A4zgw8bMsBvbYqj24Gt/Hvsjg==",
+  "dgSpecHash": "tKhB9fq+Abo/wKRyIIsK3cC58tBPGLZAYI8tGJMPjiued0VSLFuvvrPvjZ+4u5yivxMHvPLZ6OKCT/ofPY85Dg==",
   "success": true,
   "projectFilePath": "G:\\Laptop PJE\\Mis Documentos\\Consultoria Vicente\\BackEndERPVice\\Libreria.Conexion\\Libreria.Conexion\\Libreria.Conexion.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ProBook 450 HP\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\ProBook 450 HP\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\ProBook 450 HP\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\ProBook 450 HP\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",

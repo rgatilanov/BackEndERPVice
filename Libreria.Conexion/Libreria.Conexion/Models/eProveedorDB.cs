@@ -9,6 +9,9 @@ namespace Libreria.Conexion.Models
     public enum eProveedorDB
     {
         Sql,
-        MySql
+        MySql,
+        PostgreSQL,
+        Oracle,
+        MariDB,
     }
 }

@@ -251,7 +251,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Dapper": "2.0.123",
           "System.Data.SqlClient": "4.8.3"
         },
         "compile": {
@@ -265,6 +264,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Dapper": "2.0.123",
           "Libreria.Conexion": "1.0.0"
         },
         "compile": {

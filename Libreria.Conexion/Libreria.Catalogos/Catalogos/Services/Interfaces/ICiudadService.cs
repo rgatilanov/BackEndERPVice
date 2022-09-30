@@ -1,5 +1,4 @@
-﻿using Libreria.Conexion.Interfaces;
-using Libreria.ERP.Catalogos.Models;
+﻿using Libreria.ERP.Catalogos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

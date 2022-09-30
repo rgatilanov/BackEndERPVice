@@ -1,10 +1,10 @@
-﻿using Libreria.Conexion.Interfaces;
-using Libreria.ERP.Catalogos.Controllers;
+﻿using Libreria.ERP.Catalogos.Controllers;
 using Libreria.ERP.Catalogos.Models;
 using Libreria.ERP.Catalogos.Services.Interfaces;
 using Libreria.ERP.Configuracion;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Libreria.ERP.Catalogos.Services
     {
         private readonly ICiudadService _metodos;
 
-        public CiudadService(IConexionDB<Ciudad> conn, ICiudadService metodos, EServer server = EServer.UDEFINED)
+        public CiudadService(DbConnection conn, ICiudadService metodos, EServer server = EServer.UDEFINED)
         {
             _metodos = new CatalogoController(conn, server);
         } 

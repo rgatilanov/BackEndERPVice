@@ -1,10 +1,11 @@
-﻿using Libreria.Conexion.Interfaces;
+﻿using Dapper;
 using Libreria.ERP.Catalogos.Models;
 using Libreria.ERP.Catalogos.Services.Interfaces;
 using Libreria.ERP.Configuracion;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,10 +17,9 @@ namespace Libreria.ERP.Catalogos.Controllers
     {
         EServer _server = EServer.UDEFINED;
         Dapper.DynamicParameters _parameters = new Dapper.DynamicParameters();
-        IConexionDB<Ciudad> _conn;
-        public CatalogoController()
-        { }
-        public CatalogoController(IConexionDB<Ciudad> conn, EServer server = EServer.UDEFINED)
+        DbConnection _conn;
+       
+        public CatalogoController(DbConnection conn, EServer server = EServer.UDEFINED)
         {
             _conn = conn;
             _server = server;
@@ -28,7 +28,6 @@ namespace Libreria.ERP.Catalogos.Controllers
         public List<Ciudad> ConsultarCiudades(int IdEstado)
         {
             List<Ciudad> lstResultado = new List<Ciudad>();
-            IConexionDB<Ciudad> _conexion = _conn;
             try
             {
                 switch (_server)
@@ -37,13 +36,28 @@ namespace Libreria.ERP.Catalogos.Controllers
                         break;
                     case EServer.AZURE_SQL:
                     case EServer.LOCAL_SQL:
-                        _parameters.Add("@IdEstado", IdEstado, DbType.Int32, ParameterDirection.Input);
-                        _conexion.PrepararProcedimiento("dbo.[pa_Ciudades_Consultar]", _parameters);
-                        lstResultado = (List<Ciudad>)_conexion.Query();
-                        break;
-                    default:
-                        break;
-                }
+
+                        var sql = @"dbo.pa_Ciudades_Consultar";
+                        var dpParametros = new DynamicParameters();
+                        dpParametros.Add("@IdEstado", IdEstado);
+
+                        using (SqlConnection conexionSQL = (SqlConnection)_conn)
+                        {
+                            var resultado = conexionSQL.Query<Ciudad, Estado, Pais, Ciudad>(
+                                sql, (ciudad, estado, pais) =>
+                                {
+                                    ciudad.Estado = estado;
+                                    ciudad.Estado.Pais = pais;
+
+                                    lstResultado.Add(ciudad);
+                                    return ciudad;
+                                },
+                   dpParametros, commandType: CommandType.StoredProcedure
+                    , splitOn: "IdEstado,IdPais"
+                   );
+                            break;
+                        }
+                };
             }
             catch (SqlException sqlEx)
             {
@@ -55,7 +69,7 @@ namespace Libreria.ERP.Catalogos.Controllers
             }
             finally
             {
-                _conexion.Dispose();
+                _conn.Dispose();
             }
             return lstResultado;
         }

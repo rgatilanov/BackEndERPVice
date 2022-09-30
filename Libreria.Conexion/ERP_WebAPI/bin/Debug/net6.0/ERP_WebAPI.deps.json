@@ -147,7 +147,6 @@
       "System.Security.Principal.Windows/4.7.0": {},
       "Libreria.Conexion/1.0.0": {
         "dependencies": {
-          "Dapper": "2.0.123",
           "System.Data.SqlClient": "4.8.3"
         },
         "runtime": {
@@ -156,6 +155,7 @@
       },
       "Libreria.ERP/1.0.0": {
         "dependencies": {
+          "Dapper": "2.0.123",
           "Libreria.Conexion": "1.0.0"
         },
         "runtime": {

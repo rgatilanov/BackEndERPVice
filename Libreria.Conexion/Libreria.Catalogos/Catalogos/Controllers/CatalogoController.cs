@@ -16,11 +16,19 @@ namespace Libreria.ERP.Catalogos.Controllers
     {
         EServer _server = EServer.UDEFINED;
         Dapper.DynamicParameters _parameters = new Dapper.DynamicParameters();
-        
-        public List<Ciudad> ConsultarCiudades(IConexionDB<Ciudad> conn, int IdEstado)
+        IConexionDB<Ciudad> _conn;
+        public CatalogoController()
+        { }
+        public CatalogoController(IConexionDB<Ciudad> conn, EServer server = EServer.UDEFINED)
+        {
+            _conn = conn;
+            _server = server;
+        }
+
+        public List<Ciudad> ConsultarCiudades(int IdEstado)
         {
             List<Ciudad> lstResultado = new List<Ciudad>();
-            IConexionDB<Ciudad> _conexion = conn;
+            IConexionDB<Ciudad> _conexion = _conn;
             try
             {
                 switch (_server)

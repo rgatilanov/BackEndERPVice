@@ -1,4 +1,5 @@
 ﻿using Libreria.Conexion.Interfaces;
+using Libreria.ERP.Catalogos.Controllers;
 using Libreria.ERP.Catalogos.Models;
 using Libreria.ERP.Catalogos.Services.Interfaces;
 using Libreria.ERP.Configuracion;
@@ -13,20 +14,19 @@ namespace Libreria.ERP.Catalogos.Services
     public class CiudadService : ICiudadService, IDisposable
     {
         private readonly ICiudadService _metodos;
-        IConexionDB<Ciudad> _conn;
-        public CiudadService(IConexionDB<Ciudad> conn, ICiudadService metodos)
+
+        public CiudadService(IConexionDB<Ciudad> conn, ICiudadService metodos, EServer server = EServer.UDEFINED)
         {
-            _conn = conn;
-            _metodos = metodos;
+            _metodos = new CatalogoController(conn, server);
         } 
-        public List<Ciudad> ConsultarCiudades(IConexionDB<Ciudad> conn, int IdEstado)
+        public List<Ciudad> ConsultarCiudades(int IdEstado)
         {
-           return _metodos.ConsultarCiudades(conn, IdEstado); 
+           return _metodos.ConsultarCiudades(IdEstado); 
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Libreria.ERP.Catalogos.Services.Interfaces
 {
     public interface ICiudadService: IDisposable
     {
-        public List<Ciudad> ConsultarCiudades(IConexionDB<Ciudad> conn, int IdEstado);
+        public List<Ciudad> ConsultarCiudades(int IdEstado);
 
         #region IDisposable Members
         public void Dispose()

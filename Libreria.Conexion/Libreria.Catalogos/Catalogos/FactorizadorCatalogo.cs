@@ -14,13 +14,13 @@ namespace Libreria.ERP.Catalogos
     {
         public static ICiudadService Inicializar(EServer server)
         {
-            ICiudadService nuevoMotor = new Controllers.CatalogoController();
+            ICiudadService nuevoMotor = null;
 
             return server switch
             {
                 EServer.UDEFINED => throw new NullReferenceException(),
-                EServer.LOCAL_SQL => new CiudadService(BridgeDBConnection<Ciudad>.Create(ConnectionStrings.LocalServer_SQLServer, Conexion.Models.eProveedorDB.Sql), nuevoMotor),
-                EServer.AZURE_SQL => new CiudadService(BridgeDBConnection<Ciudad>.Create(ConnectionStrings.Azure_SQLServer, Conexion.Models.eProveedorDB.Sql), nuevoMotor),
+                EServer.LOCAL_SQL => new CiudadService(BridgeDBConnection<Ciudad>.Create(ConnectionStrings.LocalServer_SQLServer, Conexion.Models.eProveedorDB.Sql), nuevoMotor, server),
+                //EServer.AZURE_SQL => new CiudadService(BridgeDBConnection<Ciudad>.Create(ConnectionStrings.Azure_SQLServer, Conexion.Models.eProveedorDB.Sql), nuevoMotor),
                _ => throw new NotImplementedException(),
             };
             

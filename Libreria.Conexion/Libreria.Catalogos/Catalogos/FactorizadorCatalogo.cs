@@ -19,8 +19,8 @@ namespace Libreria.ERP.Catalogos
             return server switch
             {
                 EServer.UDEFINED => throw new NullReferenceException(),
-                EServer.LOCAL_SQL => new CiudadService(BridgeDBConnection<Ciudad>.Create(ConnectionStrings.LocalServer_SQLServer, Conexion.Models.eProveedorDB.Sql), nuevoMotor,server),
-                EServer.AZURE_SQL => new CiudadService(BridgeDBConnection<Ciudad>.Create(ConnectionStrings.Azure_SQLServer, Conexion.Models.eProveedorDB.Sql), nuevoMotor,server),
+                EServer.LOCAL_SQL => new CiudadService(BridgeDBConnection<Ciudad>.Create(ConnectionStrings.LocalServer_SQLServer, Conexion.Models.eProveedorDB.Sql), nuevoMotor),
+                EServer.AZURE_SQL => new CiudadService(BridgeDBConnection<Ciudad>.Create(ConnectionStrings.Azure_SQLServer, Conexion.Models.eProveedorDB.Sql), nuevoMotor),
                _ => throw new NotImplementedException(),
             };
             

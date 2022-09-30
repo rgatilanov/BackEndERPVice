@@ -1,4 +1,6 @@
-﻿using Libreria.ERP.Catalogos.Models;
+﻿using Libreria.ERP.Catalogos;
+using Libreria.ERP.Catalogos.Interfaces;
+using Libreria.ERP.Catalogos.Models;
 using Libreria.ERP.Catalogos.Services;
 using Libreria.ERP.Catalogos.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -11,7 +13,7 @@ namespace ERP_WebAPI.Controllers.API
     public class CatalogoAPIController : ControllerBase
     {
         //[Authorize]
-        ///https://localhost:5001/api/AgendaConciliador/ConsultarAgendaConciliadores?IdEstado=14
+        ///https://localhost:5001/api/Catalogo/ConsultarCiudades?IdEstado=14
         [HttpGet]
         [Route("api/Catalogo/ConsultarCiudades")]
         public ActionResult<Ciudad> ConsultarCiudades(int IdEstado)
@@ -19,15 +21,13 @@ namespace ERP_WebAPI.Controllers.API
             if (IdEstado == 0)
                 return BadRequest("Ingrese IdEstado válido");
 
-            CiudadService service;
-            ICiudadService catalogoService = new CatalogoService();
-
-            using (var gestion = new CatalogoService(catalogoService, Libreria.ERP.Configuracion.EServer.LOCAL_SQL))
+            Ciudad model = new Ciudad();
+            using(ICiudadService iObj = FactorizadorCatalogo.Inicializar(Libreria.ERP.Configuracion.EServer.LOCAL_SQL))
             {
-                model = User.GetUser(ID);
+                return model = (Ciudad)iObj;
             }
 
-            return model;
+            throw new Exception("Error en método");
         }
 
     }

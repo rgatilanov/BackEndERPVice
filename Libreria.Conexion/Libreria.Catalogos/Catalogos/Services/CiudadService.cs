@@ -13,12 +13,10 @@ namespace Libreria.ERP.Catalogos.Services
     public class CiudadService : ICiudadService, IDisposable
     {
         private readonly ICiudadService _metodos;
-        EServer _server = EServer.UDEFINED;
         IConexionDB<Ciudad> _conn;
-        public CiudadService(IConexionDB<Ciudad> conn, ICiudadService metodos, EServer server = EServer.UDEFINED)
+        public CiudadService(IConexionDB<Ciudad> conn, ICiudadService metodos)
         {
             _conn = conn;
-            _server = server;
             _metodos = metodos;
         } 
         public List<Ciudad> ConsultarCiudades(IConexionDB<Ciudad> conn, int IdEstado)

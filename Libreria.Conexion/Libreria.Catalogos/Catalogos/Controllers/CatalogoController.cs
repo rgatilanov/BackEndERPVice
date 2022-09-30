@@ -12,22 +12,15 @@ using System.Threading.Tasks;
 
 namespace Libreria.ERP.Catalogos.Controllers
 {
-    public class CatalogoController : ICatalogoService, IDisposable
+    public class CatalogoController : ICiudadService, IDisposable
     {
         EServer _server = EServer.UDEFINED;
         Dapper.DynamicParameters _parameters = new Dapper.DynamicParameters();
-        public CatalogoController()
-        { 
-
-        }
-        public CatalogoController(EServer server = EServer.LOCAL_SQL)
-        {
-            _server = server;
-        }
-        public List<Ciudad> ConsultarCiudades(IConexionDB<Ciudad> conexion, int IdEstado)
+        
+        public List<Ciudad> ConsultarCiudades(IConexionDB<Ciudad> conn, int IdEstado)
         {
             List<Ciudad> lstResultado = new List<Ciudad>();
-            IConexionDB<Ciudad> _conexion = conexion;
+            IConexionDB<Ciudad> _conexion = conn;
             try
             {
                 switch (_server)

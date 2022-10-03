@@ -36,27 +36,38 @@ namespace Libreria.ERP.Catalogos.Controllers
                         break;
                     case EServer.AZURE_SQL:
                     case EServer.LOCAL_SQL:
-
+                        //https://stackoverflow.com/questions/50373574/example-of-dapper-query-with-n-number-of-navigation-properties
                         var sql = @"dbo.pa_Ciudades_Consultar";
                         var dpParametros = new DynamicParameters();
                         dpParametros.Add("@IdEstado", IdEstado);
 
-                        using (SqlConnection conexionSQL = (SqlConnection)_conn)
+                        var types = new[] { typeof(Ciudad), typeof(Estado), typeof(Pais)};
+                        Func<object[], Ciudad> mapper = (objects) =>
                         {
-                            var resultado = conexionSQL.Query<Ciudad, Estado, Pais, Ciudad>(
-                                sql, (ciudad, estado, pais) =>
-                                {
-                                    ciudad.Estado = estado;
-                                    ciudad.Estado.Pais = pais;
+                            var board = (Ciudad)objects[0];
+                            board.Estado = (Estado)objects[1];
+                            board.Estado.Pais = (Pais)objects[2];
+                            return board;
+                        };
 
-                                    lstResultado.Add(ciudad);
-                                    return ciudad;
-                                },
-                   dpParametros, commandType: CommandType.StoredProcedure
-                    , splitOn: "IdEstado,IdPais"
-                   );
-                            break;
-                        }
+                        /* var resultado = _conn.Query<Ciudad, Estado, Pais, Ciudad>(
+                             sql, (ciudad, estado, pais) =>
+                             {
+                                 ciudad.Estado = estado;
+                                 ciudad.Estado.Pais = pais;
+
+                                 lstResultado.Add(ciudad);
+                                 return ciudad;
+                             },
+                        */
+                        var resultado = _conn.Query<Ciudad>(
+                            sql, types, mapper, dpParametros, null, true, splitOn: "IdEstado,IdPais", 2000, commandType: CommandType.StoredProcedure);
+
+                        return (List<Ciudad>)resultado;
+
+               //mapper,dpParametros, commandType: CommandType.StoredProcedure
+               //, splitOn: "IdEstado,IdPais");
+                        break;
                 };
             }
             catch (SqlException sqlEx)

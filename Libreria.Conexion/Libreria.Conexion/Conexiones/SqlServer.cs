@@ -26,11 +26,6 @@ namespace Libreria.Conexion.Conexiones
             _clsSqlConnection.Close();
         }
 
-        public IDbCommand CreateCommand()
-        {
-            throw new NotImplementedException();
-        }
-
         public SqlConnection Open(string encryptCnn)
         {
             try

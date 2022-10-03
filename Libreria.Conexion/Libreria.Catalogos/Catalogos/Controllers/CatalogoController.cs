@@ -39,7 +39,20 @@ namespace Libreria.ERP.Catalogos.Controllers
                     case EServer.LOCAL_SQL:
                         _parameters.Add("@IdEstado", IdEstado, DbType.Int32, ParameterDirection.Input);
                         _conexion.PrepararProcedimiento("dbo.[pa_Ciudades_Consultar]", _parameters);
-                        lstResultado = (List<Ciudad>)_conexion.Query();
+
+                        //Esto lo encontré en: https://stackoverflow.com/questions/50373574/example-of-dapper-query-with-n-number-of-navigation-properties
+                        var types = new[] { typeof(Ciudad), typeof(Estado), typeof(Pais) };
+                        Func<object[], Ciudad> mapper = (objects) =>
+                        {
+                            var board = (Ciudad)objects[0];
+                            board.Estado = (Estado)objects[1];
+                            board.Estado.Pais = (Pais)objects[2];
+                            return board;
+                        };
+
+                        lstResultado = (List<Ciudad>)_conexion.Query(types, mapper, "IdEstado,IdPais");
+
+                        //lstResultado = (List<Ciudad>)_conexion.Query();
                         break;
                     default:
                         break;

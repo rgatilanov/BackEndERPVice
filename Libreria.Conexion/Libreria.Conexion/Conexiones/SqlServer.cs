@@ -126,7 +126,19 @@ namespace Libreria.Conexion.Conexiones
                 throw new Exception("Procedimiento no preparado");
             }
         }
-
+        public IEnumerable<T> Query(Type[] types, Func<object[], T> map,string splitOn)
+        {
+            if (_blnPreparado)
+            {
+                _blnPreparado = false;
+                return _clsSqlConnection.Query<T>(_nombreProcedimiento,types,map, _dynParameters, null, true, splitOn, _timeOut, _commandType);
+            }
+            else
+            {
+                _blnPreparado = false;
+                throw new Exception("Procedimiento no preparado");
+            }
+        }
         #endregion
 
 
@@ -147,6 +159,8 @@ namespace Libreria.Conexion.Conexiones
         {
             _clsSqlConnection.Close();
         }
+
+     
 
         #endregion
     }

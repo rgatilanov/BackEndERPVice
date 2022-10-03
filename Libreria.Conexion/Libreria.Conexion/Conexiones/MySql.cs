@@ -36,6 +36,11 @@ namespace Libreria.Conexion.Conexiones
             throw new NotImplementedException();
         }
 
+        public IEnumerable<T> Query(Type[] types, Func<object[], T> map, string splitOn)
+        {
+            throw new NotImplementedException();
+        }
+
         public T QueryFirstOrDefaultDapper()
         {
             throw new NotImplementedException();

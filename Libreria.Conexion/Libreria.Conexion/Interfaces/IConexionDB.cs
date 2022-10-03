@@ -16,5 +16,6 @@ namespace Libreria.Conexion.Interfaces
         T QueryFirstOrDefaultDapper();
         object QueryFirstOrDefaultDapper(TipoDato tipo);
         IEnumerable<T> Query();
+        IEnumerable<T> Query(Type[] types, Func<object[], T> map, string splitOn);
     }
 }

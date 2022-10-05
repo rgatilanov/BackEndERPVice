@@ -27,10 +27,10 @@ namespace ERP_WebAPI.Controllers.API
         }
 
         //[Authorize]
-        ///https://localhost:5001/api/Catalogo/InsertarCiudades
+        ///https://localhost:5001/api/Catalogo/InsertarCiudad
         [HttpPost]
-        [Route("api/Catalogo/InsertarCiudades")]
-        public long InsertarCiudades([FromBody] Ciudad ciudad)
+        [Route("api/Catalogo/InsertarCiudad")]
+        public long InsertarCiudad([FromBody] Ciudad ciudad)
         {
             using (ICiudadService iObj = FactorizadorCatalogo.Inicializar(Libreria.ERP.Configuracion.EServer.LOCAL_SQL))
             {
@@ -39,5 +39,6 @@ namespace ERP_WebAPI.Controllers.API
 
             throw new Exception("Error en método");
         }
+        
     }
 }

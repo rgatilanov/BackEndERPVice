@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -91,9 +92,9 @@ namespace Libreria.ERP.Catalogos.Controllers
                         break;
                     case EServer.AZURE_SQL:
                     case EServer.LOCAL_SQL:
-                        _parameters.Add("@Ciu_Nombre", ciudad.NombreCiudad, DbType.String, ParameterDirection.Input);
-                        _parameters.Add("@Ciu_EstadoID", ciudad.Estado.IdEstado, DbType.Int16, ParameterDirection.Input);
-                        _parameters.Add("@Ciu_Iniciales", ciudad.InicialesCiudad, DbType.String, ParameterDirection.Input);
+                        _parameters.Add("@NombreCiudad", ciudad.NombreCiudad, DbType.String, ParameterDirection.Input);
+                        _parameters.Add("@IdEstado", ciudad.Estado.IdEstado, DbType.Int16, ParameterDirection.Input);
+                        _parameters.Add("@InicialesCiudad", ciudad.InicialesCiudad, DbType.String, ParameterDirection.Input);
 
                         _conexion.PrepararProcedimiento("dbo.[pa_Ciudades_Insertar]", _parameters);
                         Resultado = _conexion.ExecuteDapper();
@@ -117,5 +118,6 @@ namespace Libreria.ERP.Catalogos.Controllers
             }
             return Resultado;
         }
+
     }
 }

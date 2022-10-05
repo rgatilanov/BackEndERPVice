@@ -11,6 +11,7 @@ namespace Libreria.ERP.Catalogos.Services.Interfaces
     public interface ICiudadService: IDisposable
     {
         public List<Ciudad> ConsultarCiudades(int IdEstado);
+        public long InsertarCiudades(Ciudad ciudad);
 
         #region IDisposable Members
         public void Dispose()

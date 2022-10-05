@@ -1,4 +1,5 @@
 ﻿using Libreria.Conexion.Interfaces;
+using Libreria.ERP.Catalogos.Interfaces;
 using Libreria.ERP.Catalogos.Models;
 using Libreria.ERP.Catalogos.Services.Interfaces;
 using Libreria.ERP.Configuracion;
@@ -76,6 +77,45 @@ namespace Libreria.ERP.Catalogos.Controllers
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        public long InsertarCiudades(Ciudad ciudad)
+        {
+            long Resultado = 0;
+            IConexionDB<Ciudad> _conexion = _conn;
+            try
+            {
+                switch (_server)
+                {
+                    case EServer.UDEFINED:
+                        break;
+                    case EServer.AZURE_SQL:
+                    case EServer.LOCAL_SQL:
+                        _parameters.Add("@Ciu_Nombre", ciudad.NombreCiudad, DbType.String, ParameterDirection.Input);
+                        _parameters.Add("@Ciu_EstadoID", ciudad.Estado.IdEstado, DbType.Int16, ParameterDirection.Input);
+                        _parameters.Add("@Ciu_Iniciales", ciudad.InicialesCiudad, DbType.String, ParameterDirection.Input);
+
+                        _conexion.PrepararProcedimiento("dbo.[pa_Ciudades_Insertar]", _parameters);
+                        Resultado = _conexion.ExecuteDapper();
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception(sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                _conexion.Dispose();
+            }
+            return Resultado;
         }
     }
 }

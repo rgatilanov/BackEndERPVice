@@ -12,7 +12,7 @@ namespace Libreria.ERP.Catalogos.Models
         public int IdCiudad { get; set; }
         public string? NombreCiudad { get; set; }
         public string? InicialesCiudad { get; set; }
-        public IEstado Estado { get; set; } = new Estado();
+        public Estado? Estado { get; set; }
         public bool ValorDefaultCiudad { get; set; }
     }
 }

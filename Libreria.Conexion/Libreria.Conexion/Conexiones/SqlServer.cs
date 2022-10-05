@@ -78,7 +78,7 @@ namespace Libreria.Conexion.Conexiones
             if (_blnPreparado)
             {
                 _blnPreparado = false;
-                return _clsSqlConnection.Execute(_nombreProcedimiento, _dynParameters, null, _timeOut, _commandType);
+                return _clsSqlConnection.ExecuteScalar<long>(_nombreProcedimiento, _dynParameters, null, _timeOut, _commandType);
             }
             else
             {

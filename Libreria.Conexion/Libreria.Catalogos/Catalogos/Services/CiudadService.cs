@@ -1,5 +1,6 @@
 ﻿using Libreria.Conexion.Interfaces;
 using Libreria.ERP.Catalogos.Controllers;
+using Libreria.ERP.Catalogos.Interfaces;
 using Libreria.ERP.Catalogos.Models;
 using Libreria.ERP.Catalogos.Services.Interfaces;
 using Libreria.ERP.Configuracion;
@@ -27,6 +28,11 @@ namespace Libreria.ERP.Catalogos.Services
         public void Dispose()
         {
             
+        }
+
+        public long InsertarCiudades(Ciudad ciudad)
+        {
+            return _metodos.InsertarCiudades(ciudad);
         }
     }
 }

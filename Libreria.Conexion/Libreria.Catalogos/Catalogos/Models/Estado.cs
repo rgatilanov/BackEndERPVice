@@ -13,7 +13,7 @@ namespace Libreria.ERP.Catalogos.Models
         public string? NombreEstado { get; set; }
         public string? InicialesEstado { get; set; }
         public int CodigoINEGIEstado { get; set; }
-        public IPais Pais { get; set; } = new Pais();
+        public Pais? Pais { get; set; } 
         public bool ValorDefaultEstado { get; set; }
     }
 }

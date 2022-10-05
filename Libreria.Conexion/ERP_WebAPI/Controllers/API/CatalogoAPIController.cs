@@ -18,14 +18,26 @@ namespace ERP_WebAPI.Controllers.API
         [Route("api/Catalogo/ConsultarCiudades")]
         public List<Ciudad> ConsultarCiudades(int IdEstado)
         {
-            List<Ciudad> lstModel = new List<Ciudad>();
             using (ICiudadService iObj = FactorizadorCatalogo.Inicializar(Libreria.ERP.Configuracion.EServer.LOCAL_SQL))
             {
-                return lstModel = iObj.ConsultarCiudades(IdEstado);
+                return iObj.ConsultarCiudades(IdEstado);
             }
 
             throw new Exception("Error en método");
         }
 
+        //[Authorize]
+        ///https://localhost:5001/api/Catalogo/InsertarCiudades
+        [HttpPost]
+        [Route("api/Catalogo/InsertarCiudades")]
+        public long InsertarCiudades([FromBody] Ciudad ciudad)
+        {
+            using (ICiudadService iObj = FactorizadorCatalogo.Inicializar(Libreria.ERP.Configuracion.EServer.LOCAL_SQL))
+            {
+                return iObj.InsertarCiudades(ciudad);
+            }
+
+            throw new Exception("Error en método");
+        }
     }
 }

@@ -517,26 +517,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ProBook 450 HP\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Vicente Perez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Laptop PJE\\Mis Documentos\\Consultoria Vicente\\BackEndERPVice\\Libreria.Conexion\\Libreria.Catalogos\\Libreria.ERP.csproj",
+      "projectUniqueName": "D:\\RepositorioIngeniaTI\\BackEndERPVice\\Libreria.Conexion\\Libreria.Catalogos\\Libreria.ERP.csproj",
       "projectName": "Libreria.ERP",
-      "projectPath": "G:\\Laptop PJE\\Mis Documentos\\Consultoria Vicente\\BackEndERPVice\\Libreria.Conexion\\Libreria.Catalogos\\Libreria.ERP.csproj",
-      "packagesPath": "C:\\Users\\ProBook 450 HP\\.nuget\\packages\\",
-      "outputPath": "G:\\Laptop PJE\\Mis Documentos\\Consultoria Vicente\\BackEndERPVice\\Libreria.Conexion\\Libreria.Catalogos\\obj\\",
+      "projectPath": "D:\\RepositorioIngeniaTI\\BackEndERPVice\\Libreria.Conexion\\Libreria.Catalogos\\Libreria.ERP.csproj",
+      "packagesPath": "C:\\Users\\Vicente Perez\\.nuget\\packages\\",
+      "outputPath": "D:\\RepositorioIngeniaTI\\BackEndERPVice\\Libreria.Conexion\\Libreria.Catalogos\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ProBook 450 HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Vicente Perez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -544,17 +537,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "G:\\EjerciciosMTWDM2020\\Mis NuGet": {},
-        "G:\\Mis paquetes Nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "G:\\Laptop PJE\\Mis Documentos\\Consultoria Vicente\\BackEndERPVice\\Libreria.Conexion\\Libreria.Conexion\\Libreria.Conexion.csproj": {
-              "projectPath": "G:\\Laptop PJE\\Mis Documentos\\Consultoria Vicente\\BackEndERPVice\\Libreria.Conexion\\Libreria.Conexion\\Libreria.Conexion.csproj"
+            "D:\\RepositorioIngeniaTI\\BackEndERPVice\\Libreria.Conexion\\Libreria.Conexion\\Libreria.Conexion.csproj": {
+              "projectPath": "D:\\RepositorioIngeniaTI\\BackEndERPVice\\Libreria.Conexion\\Libreria.Conexion\\Libreria.Conexion.csproj"
             }
           }
         }
@@ -584,7 +574,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

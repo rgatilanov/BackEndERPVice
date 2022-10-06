@@ -34,6 +34,7 @@ namespace Libreria.Conexion.Conexiones
 
         public IEnumerable<T> Query()
         {
+
             throw new NotImplementedException();
         }
 
